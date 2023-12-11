@@ -1,47 +1,3 @@
-// const express = require('express');
-// const nodemailer = require('nodemailer');
-// const bodyParser = require('body-parser');
-
-// const app = express();
-// const port = 3000; // You can use any port you prefer
-
-// // Middleware to parse JSON in the request body
-// app.use(bodyParser.json());
-
-// // Define your email transporter
-// const transporter = nodemailer.createTransport({
-//   service: 'gmail',
-//   auth: {
-//     user: 'rengawy1@gmail.com', // Your Gmail address
-//     pass: 'jpiofdzcpozcqepg'   // Your Gmail password or App Password
-//   }
-// });
-
-// // Define your API endpoint
-// app.post('/send-email', (req, res) => {
-//   const { to, subject, body } = req.body;
-
-//   // Email options
-//   const mailOptions = {
-//     from: 'leads@gmail.com',
-//     to: 'aebussiness01@gmail.com',
-//     subject,
-//     html: body
-//   };
-
-//   // Send the email
-//   transporter.sendMail(mailOptions, (error, info) => {
-//     if (error) {
-//       return res.status(500).send(error.toString());
-//     }
-//     res.status(200).send('Email sent: ' + info.response);
-//   });
-// });
-
-// // Start the server
-// app.listen(port, () => {
-//   console.log(`Server is running on http://localhost:${port}`);
-// });
 
 const express = require('express');
 const nodemailer = require('nodemailer');
@@ -49,7 +5,7 @@ const bodyParser = require('body-parser');
 const twilio = require('twilio');
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 
@@ -98,6 +54,6 @@ app.post('/send-message', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
